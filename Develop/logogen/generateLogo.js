@@ -1,0 +1,5 @@
+
+
+function generateLogo(data) {
+    
+}
