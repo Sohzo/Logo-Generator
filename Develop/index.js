@@ -56,15 +56,30 @@ function createSVGfile(fileName, data) {
 
 function init() {
 
-    const logoinput = inquirer.prompt(questions);
+    const answers = inquirer.prompt(questions);
 
-    var svg = new SVG();
-    svg.setTextData();
-    svg.setShapeData();
-    
-    svgFinal = svg.render();
+        var text = "";
+        if (answers.text.length > 3 || answers.text.length < 1) {
+            console.log("Please enter 1-3 characters")
+            return;
+        } else {
+            text = answers.text;
+        }
 
-    createSVGfile("logo.svg", svgFinal)
+        var finalshape = 
+
+
+
+
+
+
+        var svg = new SVG();
+        svg.setTextData();
+        svg.setShapeData(finalshape);
+
+        svgFinal = svg.render();
+
+        createSVGfile("logo.svg", svgFinal)
 }
 
 init();
