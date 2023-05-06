@@ -54,9 +54,9 @@ function createSVGfile(fileName, data) {
     );
 }
 
-function init() {
+ async function init() {
 
-    const answers = inquirer.prompt(questions);
+    const answers = await inquirer.prompt(questions);
 
         var text = "";
         if (answers.text.length > 3 || answers.text.length < 1) {
@@ -66,15 +66,22 @@ function init() {
             text = answers.text;
         }
 
-        var finalshape = 
+        var finalshape;
 
-
-
-
-
+        if (answers.shape === "Circle") {
+            finalshape = new Circle();
+        } else if (answers.shape === "Triangle") {
+            finalshape = new Triangle();
+        } else if (answers.shape === "Square") {
+            finalshape = new Square();
+        } else {
+            return
+        }
+        
+        
 
         var svg = new SVG();
-        svg.setTextData();
+        svg.setTextData(text, answers.textcolor);
         svg.setShapeData(finalshape);
 
         svgFinal = svg.render();
