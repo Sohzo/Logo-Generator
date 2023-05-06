@@ -1,4 +1,5 @@
 const inquirer = require('inquirer')
+const generateLogo = require('./logogen/generateLogo');
 const fs = require('fs');
 
 const questions = [
@@ -33,7 +34,7 @@ function createSVGfile(fileName, data) {
 
 function init() {
     inquirer.prompt(questions).then(function (userinput) {
-        createSVGfile("logo.svg")
+        createSVGfile("logo.svg", generateLogo(userinput));
     })
 }
 
