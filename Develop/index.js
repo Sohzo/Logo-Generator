@@ -1,7 +1,7 @@
 const inquirer = require('inquirer')
-const generateLogo = require('./logogen/generateLogo');
 const fs = require('fs');
-const {Circle, Triangle, Square} = require("./lib/shapes")
+const {Circle, Triangle, Square} = require("./lib/shapes");
+const { create } = require('domain');
 
 class SVG {
     constructor() {
@@ -17,6 +17,9 @@ class SVG {
         this.textdata = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
     }
     
+    setShapeData(shape) {
+        this.shapedata = shape.render();
+    }
 }
 
 
@@ -52,9 +55,16 @@ function createSVGfile(fileName, data) {
 }
 
 function init() {
-    inquirer.prompt(questions).then(function (userinput) {
-        createSVGfile("logo.svg", generateLogo(userinput));
-    })
+
+    const logoinput = inquirer.prompt(questions);
+
+    var svg = new SVG();
+    svg.setTextData();
+    svg.setShapeData();
+    
+    svgFinal = svg.render();
+
+    createSVGfile("logo.svg", svgFinal)
 }
 
 init();
