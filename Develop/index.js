@@ -1,6 +1,24 @@
 const inquirer = require('inquirer')
 const generateLogo = require('./logogen/generateLogo');
 const fs = require('fs');
+const {Circle, Triangle, Square} = require("./lib/shapes")
+
+class SVG {
+    constructor() {
+        this.textdata = ''
+        this.shapedata = ''
+    }
+
+    render() {
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapedata}${this.textdata}</svg>'
+    }
+    
+    setTextData(text, textcolor){
+        this.textdata = '<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textcolor}">${text}</text>'
+    }
+    
+}
+
 
 const questions = [
     {
@@ -14,9 +32,10 @@ const questions = [
         message: 'What color should the text be?',
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'shape',
-        message: 'What shape should the logo be? (Circle, Triangle, or Square)',
+        message: 'What shape should the logo be?',
+        choices: ["Circle", "Triangle", "Square"],
         
     },
     {
