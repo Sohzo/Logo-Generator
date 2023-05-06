@@ -78,7 +78,7 @@ function createSVGfile(fileName, data) {
             return
         }
         
-        
+        finalshape.setTextColor(answers.shapecolor)
 
         var svg = new SVG();
         svg.setTextData(text, answers.textcolor);
