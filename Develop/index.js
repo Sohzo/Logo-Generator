@@ -14,7 +14,7 @@ class SVG {
     }
     
     setTextData(text, color) {
-        this.textdata = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
+        this.textdata = `<text x="150" y="125" font-size="40" text-anchor="middle" fill="${color}">${text}</text>`
     }
     
     setShapeData(shape) {
