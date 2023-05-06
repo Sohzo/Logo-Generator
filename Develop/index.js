@@ -10,11 +10,11 @@ class SVG {
     }
 
     render() {
-        return '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapedata}${this.textdata}</svg>'
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapedata}${this.textdata}</svg>`
     }
     
-    setTextData(text, textcolor){
-        this.textdata = '<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textcolor}">${text}</text>'
+    setTextData(text, color) {
+        this.textdata = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
     }
     
 }
